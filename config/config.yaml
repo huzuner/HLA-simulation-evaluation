@@ -1,0 +1,5 @@
+#alleles
+hla: "config/alleles.tsv"
+
+#art simulation
+f_coverage: 50
