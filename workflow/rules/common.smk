@@ -20,7 +20,7 @@ def create_mixed_samples(n,k): #n: number of samples in the end, k: number of fr
     while i < n:
         i += 1
         sel = alleles.sample(k, random_state=i)
-        sel['num'] = random_percentage(i,k)
+        sel['num'] = random_percentage(i+1,k)
         sel['num_reads'] = sel['num']*2000 #assume the mixture will have 2000 reads
         sel['sample_name'] = "SampleM" + str(i)
 
@@ -29,17 +29,18 @@ def create_mixed_samples(n,k): #n: number of samples in the end, k: number of fr
     del df['num'] 
     return df
 
-def create_pure_samples(n):
-    i = 0
-    df = pd.DataFrame(columns=['hla'])
-    while i < n:
-        i += 1
-        sel = alleles.sample(1, random_state=i)
-        sel['num_reads'] = 2000 #assume the mixture will have 2000 reads
-        sel['sample_name'] = "SampleP" + str(i)
+#def create_pure_samples(n):
+#    i = 0
+#    df = pd.DataFrame(columns=['hla'])
+#    while i < n:
+#        i += 1
+#        sel = alleles.sample(1, random_state=i)
+#        sel['num_reads'] = 2000 #assume the mixture will have 2000 reads
+#        sel['sample_name'] = "SampleP" + str(i)
+#
+#        df = pd.concat([df,sel])
+#        df['num_reads'] = df['num_reads'].astype(int).astype('str')
+#    return df
+#
 
-        df = pd.concat([df,sel])
-        df['num_reads'] = df['num_reads'].astype(int).astype('str')
-    return df
-
-df = pd.concat([create_mixed_samples(2,4), create_pure_samples(2)])
+df = create_mixed_samples(5,4)

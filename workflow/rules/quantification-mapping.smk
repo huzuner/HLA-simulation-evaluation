@@ -18,10 +18,10 @@ rule kallisto_quant:
     output:
         directory('results/kallisto/quant_results_{sample}')
     params:
-        extra = ""
+        extra = "-b 100"
     log:
         "logs/kallisto/kallisto_quant_{sample}.log"
-    threads: 1
+    threads: 10
     wrapper:
         "0.74.0/bio/kallisto/quant"
 

@@ -33,7 +33,6 @@ rule get_fractions:
 
 rule concat_fractions: 
     input:
-        #fq1=expand("results/fractions/{{sample}}-{allele}-{num}_1.fq", zip, allele=df.loc[df['sample_name'] == "{wildcards.sample}",['hla']], num=df.loc[df['sample_name'] == "{wildcards.sample}",['num_reads']])
         fq1=lambda wc: expand("results/fractions/{{sample}}-{allele}-{num}_1.fq",
             zip,
             allele=df.loc[df['sample_name'] == wc.sample]['hla'],
