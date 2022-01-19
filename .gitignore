@@ -1,4 +1,5 @@
 resources/*
 !resources/scenarios/*
-./snakemake
-
+.snakemake/
+logs/
+results/

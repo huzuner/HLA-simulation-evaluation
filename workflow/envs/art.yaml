@@ -2,4 +2,4 @@ name: short read simulator
 channels:
    - bioconda
 dependencies:
-   - art
+   - art=2016.06.05

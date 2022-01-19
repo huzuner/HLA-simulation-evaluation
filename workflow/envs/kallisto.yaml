@@ -1,3 +1,5 @@
 name: kallisto
+channels:
+   - bioconda
 dependencies:
-   - kallisto
+   - kallisto=0.48.0
