@@ -1,15 +1,15 @@
 rule kallisto_index:
     input:
-        fasta = "resources/HLA-alleles/{genome}.fasta"
+        fasta = "resources/HLA-alleles/hla_gen.fasta"
     output:
-        index = "results/kallisto-index/{genome}.idx"
+        index = "results/kallisto-index/hla_gen.idx"
     params:
         extra = "--kmer-size=5"
     log:
-        "logs/kallisto/index/{genome}.log"
-    threads: 1
+        "logs/kallisto/index/hla_gen.log"
+    threads: 6
     wrapper:
-        "0.74.0/bio/kallisto/index"
+        "v0.86.0/bio/kallisto/index"
 
 rule kallisto_quant:
     input:
@@ -21,22 +21,22 @@ rule kallisto_quant:
         extra = "-b 100"
     log:
         "logs/kallisto/kallisto_quant_{sample}.log"
-    threads: 10
+    threads: 4
     wrapper:
-        "0.74.0/bio/kallisto/quant"
+        "v0.86.0/bio/kallisto/quant"
 
 rule bwa_index:
     input:
-        "resources/hs_genome/{genome}.fasta"
+        "resources/hs_genome/hs_genome.fasta"
     output:
-        multiext("results/bwa-index/{genome}", ".amb", ".ann", ".bwt", ".pac", ".sa")
+        multiext("results/bwa-index/hs_genome", ".amb", ".ann", ".bwt", ".pac", ".sa")
     log:
-        "logs/bwa_index/{genome}.log"
+        "logs/bwa_index/hs_genome"
     params:
-        prefix="results/bwa-index/{genome}",
+        prefix="results/bwa-index/bacterium",
         algorithm="bwtsw" 
     wrapper:
-        "0.74.0/bio/bwa/index"
+        "v0.86.0/bio/bwa/index"
 
 rule bwa_mem:
     input:
@@ -50,9 +50,9 @@ rule bwa_mem:
         extra=r"-R '@RG\tID:{sample}\tSM:{sample}'",
         sort="samtools",             
         sort_order="coordinate",  
-    threads: 2
+    threads: 10
     wrapper:
-        "0.74.0/bio/bwa/mem"
+        "v0.86.0/bio/bwa/mem"
 
 rule samtools_index:
     input:
@@ -61,5 +61,7 @@ rule samtools_index:
         "results/mapped/{sample}.bam.bai"
     log:
         "logs/samtools_index/{sample}.log"
-    wrapper:
-        "0.74.0/bio/samtools/index"
+    conda:
+        "../envs/samtools.yaml"
+    shell:
+        "samtools index {input}"

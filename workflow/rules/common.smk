@@ -43,4 +43,4 @@ def create_mixed_samples(n,k): #n: number of samples in the end, k: number of fr
 #    return df
 #
 
-df = create_mixed_samples(5,4)
+df = create_mixed_samples(1,4)
