@@ -6,6 +6,7 @@ import shutil, random, os
 configfile: "config/config.yaml"
 
 alleles = pd.read_csv(config["hla"], sep ="\t")
+bootstraps = config["bootstraps"]
 
 def random_percentage(s,n): #x: seed, n: number of samples in the end
     np.random.seed(s)
@@ -43,4 +44,4 @@ def create_mixed_samples(n,k): #n: number of samples in the end, k: number of fr
 #    return df
 #
 
-df = create_mixed_samples(1,4)
+df = create_mixed_samples(config["samples"],config["fractions"])

@@ -7,15 +7,8 @@ include: "rules/calling.smk"
 
 rule all:
     input:
-        "results/bwa-index/hs_genome.amb",
-        expand("results/art/{allele}_1.fq", allele=alleles.hla),
         [f"results/fractions/{row['sample_name']}-{row['hla']}-{row['num_reads']}_1.fq" for index, row in df.iterrows()],
-        expand("results/mixed/{sample}_1.fq", sample=df.sample_name.unique()),
-        "results/kallisto-index/hla_gen.idx",
         expand("results/kallisto/quant_results_{sample}", sample=df.sample_name.unique()),
-        expand("results/mapped/{sample}.bam", sample=df.sample_name.unique()),
-        expand("results/mapped/{sample}.bam.bai", sample=df.sample_name.unique()),
-        expand("results/observations/{sample}.bcf", sample=df.sample_name.unique()),
         expand("results/calls/{sample}.bcf", sample=df.sample_name.unique())
 
 
