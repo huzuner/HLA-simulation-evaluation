@@ -35,13 +35,13 @@ rule concat_fractions:
     input:
         fq1=lambda wc: expand("results/fractions/{{sample}}-{allele}-{num}_1.fq",
             zip,
-            allele=df.loc[df['sample_name'] == wc.sample]['hla'],
-            num=df.loc[df['sample_name'] == wc.sample]['num_reads']
+            allele=sample_table.loc[sample_table['sample_name'] == wc.sample]['hla'],
+            num=sample_table.loc[sample_table['sample_name'] == wc.sample]['num_reads']
             ),
         fq2=lambda wc: expand("results/fractions/{{sample}}-{allele}-{num}_2.fq",
             zip,
-            allele=df.loc[df['sample_name'] == wc.sample]['hla'],
-            num=df.loc[df['sample_name'] == wc.sample]['num_reads']
+            allele=sample_table.loc[sample_table['sample_name'] == wc.sample]['hla'],
+            num=sample_table.loc[sample_table['sample_name'] == wc.sample]['num_reads']
             )
     output:
         out_fq1="results/mixed/{sample}_1.fq",

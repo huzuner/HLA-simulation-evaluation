@@ -1,40 +1,6 @@
-hla
-A_gen
-B_gen
-C_gen
-DMA_gen
-DMB_gen
-DOA_gen
-DOB_gen
-DPA1_gen
-DPA2_gen
-DPB1_gen
-DPB2_gen
-DQA1_gen
-DQA2_gen
-DQB1_gen
-DRA_gen
-DRB1_gen
-DRB3_gen
-DRB4_gen
-DRB5_gen
-E_gen
-F_gen
-G_gen
-HFE_gen
-H_gen
-J_gen
-K_gen
-L_gen
-MICA_gen
-MICB_gen
-N_gen
-P_gen
-S_gen
-TAP1_gen
-TAP2_gen
-T_gen
-U_gen
-V_gen
-W_gen
-Y_gen
+hla	fraction
+HLA20547	0.2
+HLA24424	0.1
+HLA24758	0.4
+HLA29471	0.3
+

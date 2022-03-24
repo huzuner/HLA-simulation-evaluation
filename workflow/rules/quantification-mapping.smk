@@ -4,10 +4,10 @@ rule kallisto_index:
     output:
         index = "results/kallisto-index/hla_gen.idx"
     params:
-        extra = "--kmer-size=5"
+        extra = "--kmer-size=31"
     log:
         "logs/kallisto/index/hla_gen.log"
-    threads: 6
+    threads: 8
     wrapper:
         "v0.86.0/bio/kallisto/index"
 
@@ -18,10 +18,10 @@ rule kallisto_quant:
     output:
         directory('results/kallisto/quant_results_{sample}')
     params:
-        extra = "-b {bootstraps}"
+        extra = "-b 100 --seed=42 --pseudobam"
     log:
         "logs/kallisto/kallisto_quant_{sample}.log"
-    threads: 4
+    threads: 10
     wrapper:
         "v0.86.0/bio/kallisto/quant"
 

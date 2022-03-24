@@ -1,7 +1,7 @@
 rule varlociraptor_preprocess:
     input:
         ref="resources/hs_genome/hs_genome.fasta",
-        candidates="resources/hla-allele-variants.vcf.gz",
+        candidates="resources/hla-allele-variants_v3.vcf.gz",
         bam="results/mapped/{sample}.bam",
         bai="results/mapped/{sample}.bam.bai"
     output:

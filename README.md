@@ -1,1 +1,1 @@
-This workflow creates mixture samples that consist of randomly selected HLA types.
+This workflow creates one sample with requested fractions of HLA types.

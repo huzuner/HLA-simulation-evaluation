@@ -3,3 +3,4 @@ resources/*
 .snakemake/
 logs/
 results/
+playground/
